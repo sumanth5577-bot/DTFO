@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" class="navigator-link" panel-name="suite-com.knacksystems.driverfactory.AppTest">
-              <span class="suite-name border-passed">com.knacksystems.driverfactory.AppTest</span>
+              <span class="suite-name border-failed">com.knacksystems.driverfactory.AppTest</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,21 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-com.knacksystems.driverfactory.AppTest" class="hide-methods passed suite-com.knacksystems.driverfactory.AppTest"> (hide)</a> <!-- hide-methods passed suite-com.knacksystems.driverfactory.AppTest -->
-                      <a href="#" panel-name="suite-com.knacksystems.driverfactory.AppTest" class="show-methods passed suite-com.knacksystems.driverfactory.AppTest"> (show)</a> <!-- show-methods passed suite-com.knacksystems.driverfactory.AppTest -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-com.knacksystems.driverfactory.AppTest" class="hide-methods failed suite-com.knacksystems.driverfactory.AppTest"> (hide)</a> <!-- hide-methods failed suite-com.knacksystems.driverfactory.AppTest -->
+                      <a href="#" panel-name="suite-com.knacksystems.driverfactory.AppTest" class="show-methods failed suite-com.knacksystems.driverfactory.AppTest"> (show)</a> <!-- show-methods failed suite-com.knacksystems.driverfactory.AppTest -->
                     </span>
-                    <div class="method-list-content passed suite-com.knacksystems.driverfactory.AppTest">
+                    <div class="method-list-content failed suite-com.knacksystems.driverfactory.AppTest">
                       <span>
-                        <img width="3%" src="passed.png"/>
+                        <img width="3%" src="failed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-com.knacksystems.driverfactory.AppTest" title="com.knacksystems.driverfactory.AppTest" hash-for-method="kickStart">kickStart</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-com.knacksystems.driverfactory.AppTest -->
+                    </div> <!-- method-list-content failed suite-com.knacksystems.driverfactory.AppTest -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -117,9 +117,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-com.knacksystems.driverfactory.AppTest" class="panel com.knacksystems.driverfactory.AppTest">
-          <div class="suite-com.knacksystems.driverfactory.AppTest-class-passed">
+          <div class="suite-com.knacksystems.driverfactory.AppTest-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">com.knacksystems.driverfactory.AppTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -128,10 +128,47 @@
                   <a name="kickStart">
                   </a> <!-- kickStart -->
                   <span class="method-name">kickStart</span>
+                  <div class="stack-trace">java.lang.NoClassDefFoundError: org/openqa/selenium/remote/AbstractDriverOptions
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:338)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+	at java.net.URLClassLoader.defineClass(URLClassLoader.java:467)
+	at java.net.URLClassLoader.access$100(URLClassLoader.java:73)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:368)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:362)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:361)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:338)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:105)
+	at com.knacksystems.commonfunctionlibrary.FunctionalLibrary.startBrowser(FunctionalLibrary.java:56)
+	at com.knacksystems.driverfactory.DriverScript.startTest(DriverScript.java:64)
+	at com.knacksystems.driverfactory.AppTest.kickStart(AppTest.java:13)
+Caused by: java.lang.ClassNotFoundException: org.openqa.selenium.remote.AbstractDriverOptions
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:338)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 62 more
+... Removed 34 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-com.knacksystems.driverfactory.AppTest-class-passed -->
+          </div> <!-- suite-com.knacksystems.driverfactory.AppTest-class-failed -->
         </div> <!-- panel com.knacksystems.driverfactory.AppTest -->
         <div panel-name="test-xml-com.knacksystems.driverfactory.AppTest" class="panel">
           <div class="main-panel-header rounded-window-top">
@@ -187,12 +224,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'kickStart')
 data.setCell(0, 2, 'com.knacksystems.driverfactory.AppTest')
-data.setCell(0, 3, 396060);
+data.setCell(0, 3, 2543);
 window.suiteTableData['com.knacksystems.driverfactory.AppTest']= { tableData: data, tableDiv: 'times-div-com.knacksystems.driverfactory.AppTest'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 6 minutes</span>
+              <span class="suite-total-time">Total running time: 2 seconds</span>
               <div id="times-div-com.knacksystems.driverfactory.AppTest">
               </div> <!-- times-div-com.knacksystems.driverfactory.AppTest -->
             </div> <!-- times-div -->
@@ -220,6 +257,8 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.knacksystems.driverfactory.AppTest</div> <!-- chronological-class-name -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">kickStart</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- test-method -->

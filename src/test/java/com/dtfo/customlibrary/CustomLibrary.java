@@ -20,12 +20,13 @@ public class CustomLibrary
 	 driver.get("https://backoffice.cteili-oneworldt1-s1-public.model-t.cc.commerce.ondemand.com/backoffice/login.zul;jsessionid=51C3CEFB8CFBC5E282AC9B767F84FDC0.backoffice-f5c5b8f96-fvxxv");
  }
  
- public static void signOut(WebDriver driver)
+ public static void signOut(WebDriver driver) throws InterruptedException
  {
 	 driver.findElement(By.xpath("//a[@href='/logout']")).click();
+	 Thread.sleep(2000);
  }
  
- public static void loginFunc(WebDriver driver, String username, String pwd)
+ public static void loginFunc(WebDriver driver, String username, String pwd) throws InterruptedException
  {
 	driver.findElement(By.xpath("/html/body/main/header/nav/div/div[1]/div/div/div/div/ul/li[2]/a")).click();
 	
@@ -34,10 +35,12 @@ public class CustomLibrary
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='j_username']")));
 	driver.findElement(By.xpath("//input[@id='j_username']")).clear();
 	driver.findElement(By.xpath("//input[@id='j_username']")).sendKeys(username);
+	Thread.sleep(3000);
 	
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='j_password']")));
 	driver.findElement(By.xpath("//input[@id='j_password']")).clear();
 	driver.findElement(By.xpath("//input[@id='j_password']")).sendKeys(pwd);
+	Thread.sleep(3000);
 	
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='loginForm']/button")));
 	driver.findElement(By.xpath("//*[@id='loginForm']/button")).click();
@@ -76,7 +79,7 @@ public class CustomLibrary
  
  public static void paymentPage(WebDriver driver) throws InterruptedException, AWTException
  {
-	WebDriverWait wait=new WebDriverWait(driver,30);	 
+	WebDriverWait wait=new WebDriverWait(driver,60);	 
 	System.out.println("Enter Card Number"); 
  	/*JavascriptExecutor js = (JavascriptExecutor)driver;	 
  	WebElement ele=driver.findElement(By.xpath("//*[@id='cardNum']"));
@@ -84,6 +87,7 @@ public class CustomLibrary
 	js.executeScript("arguments[0].value='5112345112345114';",ele);
 	ele.clear();
 	js.executeScript("arguments[0].value='5112345112345114';",ele);*/
+	FunctionalLibrary.waitForElement(driver, "xpath", "//*[@id='cardNum']", "60");
 	driver.findElement(By.xpath("//*[@id='cardNum']")).clear();
 	driver.findElement(By.xpath("//*[@id='cardNum']")).sendKeys("5");
 	Thread.sleep(1000);
@@ -139,11 +143,11 @@ public class CustomLibrary
 	 
  }
  
- public static void addressValidation(WebDriver driver)
+ public static void addressValidation(WebDriver driver) throws InterruptedException
  {
 	 System.out.println("Enter First Name");
 	 FunctionalLibrary.waitForElement(driver, "id", "address.firstName", "30");
-	 FunctionalLibrary.typeAction(driver, "id", "address.firstName", "John");
+	 FunctionalLibrary.typeAction(driver, "id", "address.firstName", "Robert");
 	 
 	 System.out.println("Enter Last Name");
 	 FunctionalLibrary.waitForElement(driver, "id", "address.surname", "30");
@@ -151,11 +155,11 @@ public class CustomLibrary
 	 
 	 System.out.println("Enter Address Line 1");
 	 FunctionalLibrary.waitForElement(driver, "id", "address.line1", "30");
-	 FunctionalLibrary.typeAction(driver, "id", "address.line1", "580S, 238th Street,");
+	 FunctionalLibrary.typeAction(driver, "id", "address.line1", "584S, 234th Street,");
 	 
 	 System.out.println("Enter Address Line 2");
 	 FunctionalLibrary.waitForElement(driver, "id", "address.line2", "30");
-	 FunctionalLibrary.typeAction(driver, "id", "address.line2", "Bakers Street");
+	 FunctionalLibrary.typeAction(driver, "id", "address.line2", "Bakery Street");
 	 
 	 System.out.println("Enter City");
 	 FunctionalLibrary.waitForElement(driver, "id", "address.townCity", "30");
@@ -176,12 +180,31 @@ public class CustomLibrary
 	 
 	 System.out.println("Enter Phone Number");
 	 FunctionalLibrary.waitForElement(driver, "id", "address.phone", "30");
-	 FunctionalLibrary.typeAction(driver, "id", "address.phone", "4032546983"); 
+	 FunctionalLibrary.typeAction(driver, "id", "address.phone", "4032546783"); 
 	 
 	 System.out.println("Click on Next Button");
 	 FunctionalLibrary.waitForElement(driver, "xpath", "//*[@id='addressSubmit']", "30");
 	 FunctionalLibrary.clickAction(driver, "xpath", "//*[@id='addressSubmit']");
  }
+ 
+ 
+ public static void passwordUpdate(WebDriver driver, String pwd) throws InterruptedException
+	{
+		String t="30";
+		
+	System.out.println("Enter New Password");
+	//give new password locators
+	FunctionalLibrary.waitForElement(driver, "id", "newPassword", t);
+	FunctionalLibrary.clearText(driver, "id", "newPassword");
+	FunctionalLibrary.typeAction(driver, "id","newPassword",pwd);
+	
+	System.out.println("Enter Confirm New Password");
+	//give new password locators
+	FunctionalLibrary.waitForElement(driver, "id", "checkNewPassword", t);
+	FunctionalLibrary.clearText(driver, "id", "checkNewPassword");
+	FunctionalLibrary.typeAction(driver, "id","checkNewPassword",pwd);
+	
+	}
  
  
 }

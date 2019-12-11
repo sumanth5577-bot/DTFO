@@ -12,7 +12,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.dtfo.customlibrary.CustomLibrary;
-import com.eluxoneb2c.customlibrary.CustomLibraryB2C;
 import com.knacksystems.commonfunctionlibrary.FunctionalLibrary;
 import com.knacksystems.utilities.ExcelFileUtil;
 import com.knacksystems.utilities.PropertyFileUtil;
@@ -44,7 +43,7 @@ public class DriverScript
 				logger=report.createTest(TCModule);
 				
 				int rowcount=excel.rowCount(TCModule);
-				System.out.println("MTC ROW NO:"+rowcount);
+				System.out.println("No. of rows in Sheet:"+rowcount);
 				
 				
 				for(int j=1;j<=rowcount;j++)
@@ -151,9 +150,9 @@ public class DriverScript
 							logger.log(Status.INFO, Description);
 						}
 						
-						if(Object_Type.equalsIgnoreCase("frameSize"))
+						if(Object_Type.equalsIgnoreCase("frameSwitch"))
 						{
-							FunctionalLibrary.frameSize(driver);
+							FunctionalLibrary.frameSwitch(driver);
 							logger.log(Status.INFO, Description);
 						}
 						
@@ -183,7 +182,7 @@ public class DriverScript
 						
 						if(Object_Type.equalsIgnoreCase("uploadFile"))
 						{
-							FunctionalLibrary.uploadFile(driver);
+							FunctionalLibrary.uploadFile(driver, Test_Data);
 							logger.log(Status.INFO, Description);
 						}
 						
@@ -213,11 +212,7 @@ public class DriverScript
 							CustomLibrary.paymentPage(driver);
 							logger.log(Status.INFO, Description);
 						}
-						if(Object_Type.equalsIgnoreCase("loginPage"))
-						{
-							CustomLibraryB2C.loginPage(driver, Locator_Type, Locator_Value);
-							logger.log(Status.INFO, Description);
-						}
+					
 						if(Object_Type.equalsIgnoreCase("sendKeysJS"))
 						{
 							FunctionalLibrary.sendKeysJS(driver, Locator_Type, Locator_Value);
@@ -228,21 +223,36 @@ public class DriverScript
 							CustomLibrary.addressValidation(driver);
 							logger.log(Status.INFO, Description);
 						}
-						if(Object_Type.equalsIgnoreCase("typeJS"))
-						{
-							CustomLibraryB2C.typeJS(driver, Locator_Type, Locator_Value);
-							logger.log(Status.INFO, Description);
-						}
-						if(Object_Type.equalsIgnoreCase("paymentB2C"))
-						{
-							CustomLibraryB2C.paymentB2C(driver);
-							logger.log(Status.INFO, Description);
-						}
+						
 						if(Object_Type.equalsIgnoreCase("selectFunc"))
 						{
 							FunctionalLibrary.selectFunc(driver, Locator_Type, Locator_Value, Test_Data);
 							logger.log(Status.INFO, Description);
 						}
+						if(Object_Type.equalsIgnoreCase("keyActions"))
+						{
+							FunctionalLibrary.keyActions(driver, Test_Data);
+							logger.log(Status.INFO, Description);
+						}
+											
+						if(Object_Type.equalsIgnoreCase("clearText"))
+						{
+							FunctionalLibrary.clearText(driver, Locator_Type, Locator_Value);
+							logger.log(Status.INFO, Description);
+						}
+						
+						if(Object_Type.equalsIgnoreCase("quitWin"))
+						{
+							FunctionalLibrary.quitWin(driver);
+							logger.log(Status.INFO, Description);
+						}
+						
+						if(Object_Type.equalsIgnoreCase("passwordUpdate"))
+						{
+							CustomLibrary.passwordUpdate(driver, Test_Data);
+							logger.log(Status.INFO, Description);
+						}
+						
 						
 											
 						
@@ -284,6 +294,8 @@ public class DriverScript
 				}
 				report.flush();
 			}//if condition termination
+			
+			
 			else
 			{
 				excel.setData("MasterTestCases", i, 3, "NOT EXECUTED");
